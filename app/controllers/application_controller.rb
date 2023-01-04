@@ -3,7 +3,13 @@ class ApplicationController < Sinatra::Base
   
   # Add your routes here
   get "/activities" do
-    { message: "Good luck with your project!" }.to_json
+    activities = Activity.all 
+    activities.to_json
   end
+
+  # patch "patch/activities" do 
+    
+
+
 
 end
