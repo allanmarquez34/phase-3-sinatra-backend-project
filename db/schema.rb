@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2023_01_04_182717) do
 
-  create_table "activies", force: :cascade do |t|
+  create_table "activities", force: :cascade do |t|
     t.string "title"
     t.string "description"
     t.string "location"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2023_01_04_182717) do
 
   create_table "reviews", force: :cascade do |t|
     t.string "content"
-    t.integer "raiting"
+    t.integer "rating"
     t.integer "activity_id"
   end
 
