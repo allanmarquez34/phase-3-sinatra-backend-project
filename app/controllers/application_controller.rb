@@ -5,11 +5,51 @@ class ApplicationController < Sinatra::Base
   get "/activities" do
     activities = Activity.all 
     activities.to_json
+
   end
 
-  # patch "patch/activities" do 
-    
 
+  post "/new" do 
+    new_activity = Activity.create(
+      title: params[:title],
+      description: params[:description],
+      location: params[:location],
+      image: params[:image]
+    )
+    new_activity.to_json
+  end 
+
+  delete '/delete/:id' do
+    delete_activity = Activity.find(params[:id])
+    delete_activity.destroy
+    delete_activity.to_json
+  end
+
+  get '/oneactivity/:id' do 
+    one_activity = Activity.find(params[:id])
+    one_activity.to_json
+  end 
+
+  get '/review/:id' do 
+    review = Review.where(activity_id: params[:id])
+    review.to_json
+  end 
+
+  post '/newreview' do
+    new_review = Review.create(
+        rating: params[:rating],
+        content: params[:content],
+        activity_id: params[:activity_id]
+        )
+    new_review.to_json
+  end
+
+  get '/allreviews' do 
+    review = Review.all
+    review.to_json
+  end 
+    
+ 
 
 
 end
