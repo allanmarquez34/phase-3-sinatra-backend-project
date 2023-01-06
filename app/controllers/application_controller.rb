@@ -49,7 +49,16 @@ class ApplicationController < Sinatra::Base
     review.to_json
   end 
     
- 
+patch '/edit/:id' do 
+  edit_form = Activity.find(params[:id])
+  edit_form.update(
+    title: params[:title],
+    location: params[:location],
+    description: params[:description],
+    image: params[:image]
+  )
+  edit_form.to_json
+end
 
 
 end
